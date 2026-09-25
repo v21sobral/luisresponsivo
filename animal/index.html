@@ -1,0 +1,69 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iphone1 18</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="central">
+
+        <h1>Ong Amigos de Animais</h1>
+        <hr>
+        <p>Nossa missão é transformar a vida de animais em situação de abandono e vulnerabilidade, oferecendo proteção, cuidados veterinários, alimentação e, principalmente, a oportunidade de encontrar um lar seguro e cheio de amor. Acreditamos que todo animal merece respeito, cuidado e uma segunda chance. Por isso, trabalhamos diariamente para resgatar, recuperar e promover a adoção responsável de cães e gatos.
+        <br></br>
+        Você também pode fazer parte dessa transformação! Seja adotando um animal, contribuindo com doações, oferecendo um lar temporário ou ajudando como voluntário, cada gesto faz a diferença. Juntos, podemos construir uma realidade em que nenhum animal precise enfrentar o abandono sozinho. Conheça nosso trabalho e venha fazer parte dessa causa!</p>
+        <hr>
+        <div class="imagens">
+            <figure class="miniatura">
+                <img src="imagens/dinossauro.png" alt="Dinossauro">
+                <figcaption>Dinossauro</figcaption>
+            </figure>
+            <figure class="miniatura">
+                <img src="imagens/girafa.png" alt="Girafa">
+                <figcaption>Girafa</figcaption>
+            </figure>
+            <figure class="miniatura">
+                <img src="imagens/unicórnio.png" alt="Unicórnio">
+                <figcaption>Unicórnio</figcaption>
+            </figure>
+        </div>
+        <hr>
+        <div class="imagemmaior">
+            <img src="imagens/animaisjuntos.png" alt="Animais Juntos">
+        </div>
+
+        <script>
+            const card = document.querySelector('.imagemmaior');
+            const image = card ? card.querySelector('img') : null;
+
+            if (card && image) {
+                card.addEventListener('pointermove', (event) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = (event.clientX - rect.left) / rect.width;
+                    const y = (event.clientY - rect.top) / rect.height;
+
+                    const rotateY = (x - 0.5) * 18;
+                    const rotateX = (0.5 - y) * 18;
+
+                    card.style.setProperty('--rotateY', `${rotateY}deg`);
+                    card.style.setProperty('--rotateX', `${rotateX}deg`);
+                    image.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.025)`;
+                });
+
+                card.addEventListener('pointerleave', () => {
+                    card.style.setProperty('--rotateY', '0deg');
+                    card.style.setProperty('--rotateX', '0deg');
+                    image.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+                });
+            }
+        </script>
+        
+      
+    </div>
+</body>
+</html>
